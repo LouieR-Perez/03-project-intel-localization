@@ -257,16 +257,15 @@
     <!-- Bootstrap form, centered using row and justify-content-center -->
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <!-- Accessible form with label and aria-label for button -->
+        <!-- Accessible form with visually hidden label for screen readers -->
         <form>
           <!-- Email input field -->
           <div class="mb-3">
-            <label for="newsletterEmail" class="form-label">Email address</label>
             <!-- 
-              The input below uses dir="ltr" so the email is always typed left-to-right,
-              even if the page is in RTL mode. This helps users enter emails correctly.
+              Use Bootstrap's visually-hidden class to hide the label visually but keep it accessible for screen readers.
             -->
-            <input type="email" class="form-control" id="newsletterEmail" name="email" placeholder="Enter your email" required aria-required="true" autocomplete="email" dir="ltr">
+            <label for="newsletterEmail" class="form-label visually-hidden">Email address</label>
+            <input type="email" class="form-control text-end" id="newsletterEmail" name="email" placeholder="Enter your email" required aria-required="true" autocomplete="email" dir="ltr">
           </div>
           <!-- Submit button -->
           <div class="d-grid">
