@@ -1,0 +1,280 @@
+/* Add your CSS here */
+
+/* Set up basic page background and font */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Subtle blue gradient background for visual interest */
+  background: linear-gradient(135deg, #f5f6fa 0%, #e0e7ef 100%);
+  color: #222;
+}
+
+/* Header / Hero Section */
+header {
+  background: linear-gradient(90deg, #0068b5 0%, #0071c5 100%); /* Intel blue gradient */
+  color: #fff;
+  padding: 40px 0 50px 0;
+  text-align: center;
+  margin-bottom: 24px; /* Add space below header */
+}
+
+/* Intel logo styling */
+header img {
+  width: 120px; /* Resize logo */
+  margin-bottom: 20px;
+}
+
+/* Main heading style */
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Subheading/description */
+header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+  border-bottom: 3px solid #00a6f2; /* Intel accent blue */
+  padding-bottom: 20px;
+}
+
+/* Timeline Cards Section: horizontal scroll for cards, centered, max 3 visible */
+/* Add extra left and right padding so the first and last card are not flush with the edges */
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 40px 30px 20px 30px; /* 30px padding on both left and right */
+  background: #fafbfc;
+  min-height: 260px;
+  scrollbar-color: #0068b5 #e0e7ef;
+  scrollbar-width: thin;
+  max-width: 790px;            /* 3 cards * 220px + 2 gaps * 30px = 690px */
+  margin: 0 auto;
+
+  /* Enable scroll snap for smooth horizontal navigation */
+  scroll-snap-type: x mandatory; /* Snap horizontally, always snap to a card */
+
+  /* Smooth scroll for horizontal timeline */
+  scroll-behavior: smooth; /* Smooth scrolling for timeline */
+}
+
+/* Each timeline card will snap to the start of the scroll area */
+section > div {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  flex: 0 0 220px;           /* Fixed width for each card */
+  height: 220px;             /* Make card height equal to width for square look */
+  padding: 20px 18px 18px 18px;
+  margin: 0;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  min-height: unset;         /* Remove min-height so height is fixed */
+  scroll-snap-align: start; /* Snap this card to the start when scrolling */
+}
+
+/* Highlight card on hover */
+section > div:hover {
+  background: #0068b5;
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(0,104,181,0.22); /* Stronger shadow on hover */
+  transform: scale(1.05); /* Slightly grow the card */
+  transition: 
+    box-shadow 0.3s, 
+    background 0.2s, 
+    color 0.2s, 
+    transform 0.2s; /* Smooth transition for all effects */
+}
+
+/* Year style */
+section h2 {
+  font-size: 1.3rem;
+  color: #0068b5;
+  margin: 0 0 6px 0;
+  font-weight: bold;
+}
+
+/* Card title */
+section h3 {
+  font-size: 1.1rem;
+  margin: 0 0 12px 0;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Card image styling: fit inside square card */
+section > div img {
+  width: 100%;
+  height: 100%;              /* Smaller image to fit square card */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  margin-top: 8px;
+  display: block;
+  /* hide any overflow */
+  overflow: hidden;
+}
+
+/* Overlay for blue background and paragraph text */
+section > div::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #2563a9cc; /* Intel blue, semi-transparent */
+  opacity: 0;
+  transition: opacity 0.5s; /* Slower overlay transition */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Show overlay on hover */
+section > div:hover::after {
+  opacity: 1;
+}
+
+/* Card content stacking */
+section > div > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hide paragraph by default, show on hover */
+section p {
+  font-size: 0.98rem;
+  margin: 0;
+  color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.7s, opacity 0.7s; /* Slower text transition */
+  /* Place paragraph above overlay */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 20px 18px 18px 18px;
+  background: none;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-weight: normal;
+  pointer-events: none;
+}
+
+/* Show paragraph on hover */
+section > div:hover p {
+  opacity: 1;
+  max-height: 400px;
+  pointer-events: auto;
+}
+
+/* Hide h2, h3, and img on hover for clean overlay look */
+section > div:hover h2,
+section > div:hover h3,
+section > div:hover img {
+  opacity: 0.1;
+  transition: opacity 0.3s;
+}
+
+/* Add a little space below the timeline */
+body > p {
+  text-align: center;
+  color: #555;
+  margin: 18px 0 30px 0;
+  font-size: 1rem;
+}
+
+/* Custom scrollbar styling for webkit browsers */
+section::-webkit-scrollbar {
+  height: 14px;
+}
+section::-webkit-scrollbar-thumb {
+  background: #0068b5;
+  border-radius: 7px;
+  transition: background 0.3s; /* Smooth transition for hover effect */
+}
+section::-webkit-scrollbar-track {
+  background: #e0e7ef;
+  border-radius: 7px;
+}
+
+/* Make scrollbar thumb more visible on hover */
+section::-webkit-scrollbar-thumb:hover {
+  background: #003e6b; /* Even darker blue on hover for visibility */
+}
+
+/* Focus style for accessibility: show outline when a card is focused */
+section > div:focus {
+  outline: 3px solid #00a6f2; /* Bright blue outline */
+  outline-offset: 2px;
+}
+
+/* Responsive: stack cards vertically on small screens */
+@media (max-width: 900px) {
+  section {
+    /* Stack cards vertically instead of side by side */
+    flex-direction: column; /* Change from row to column */
+    min-height: unset;      /* Remove fixed min-height */
+    max-width: 98vw;        /* Use most of the screen width */
+    gap: 20px;              /* Less gap between stacked cards */
+    overflow-x: unset;      /* No horizontal scroll needed */
+    padding: 30px 5vw 20px 5vw; /* More natural padding on small screens */
+
+    /* Turn off scroll snap on small screens (not needed for vertical layout) */
+    scroll-snap-type: none;
+  }
+  section > div {
+    flex: 1 1 auto;         /* Allow cards to grow/shrink */
+    max-width: 100%;        /* Cards take full width */
+    height: 220px;          /* Reduce card height for small screens */
+    box-sizing: border-box; /* Include padding in height */
+    /* This keeps all cards the same size */
+
+    /* No scroll snap needed for vertical layout */
+    scroll-snap-align: unset;
+  }
+  section > div img {
+    height: 200px;           /* Reduce image height for small screens */
+    max-height: 200px;      /* Prevent images from growing too tall */
+    width: 100%;            /* Image takes full width */
+    object-fit: cover;      /* Crop image to fill area */
+    /* This keeps all images the same size and cards uniform */
+  }
+
+  /* Add padding to the header on small screens */
+  header {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  /* Make header text smaller on small screens */
+  header h1 {
+    font-size: 1.5rem;      /* Smaller main heading */
+  }
+  header p {
+    font-size: 1rem;        /* Smaller subheading */
+    padding-bottom: 14px;
+  }
+}
+
+/* Add simple footer styling */
+footer {
+  text-align: center;
+  color: #888;
+  font-size: 0.95rem;
+  margin: 30px 0 10px 0;
+  padding: 10px 0;
+}
