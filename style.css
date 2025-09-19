@@ -44,8 +44,7 @@ header p {
 }
 
 /* Timeline Cards Section: horizontal scroll for cards, centered, max 3 visible */
-/* Add extra left and right padding so the first and last card are not flush with the edges */
-section {
+.timeline-section {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -67,7 +66,7 @@ section {
 }
 
 /* Each timeline card will snap to the start of the scroll area */
-section > div {
+.timeline-section > div {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -87,7 +86,7 @@ section > div {
 }
 
 /* Highlight card on hover */
-section > div:hover {
+.timeline-section > div:hover {
   background: #0068b5;
   color: #fff;
   box-shadow: 0 12px 32px rgba(0,104,181,0.22); /* Stronger shadow on hover */
@@ -100,7 +99,7 @@ section > div:hover {
 }
 
 /* Year style */
-section h2 {
+.timeline-section h2 {
   font-size: 1.3rem;
   color: #0068b5;
   margin: 0 0 6px 0;
@@ -108,7 +107,7 @@ section h2 {
 }
 
 /* Card title */
-section h3 {
+.timeline-section h3 {
   font-size: 1.1rem;
   margin: 0 0 12px 0;
   font-weight: bold;
@@ -116,7 +115,7 @@ section h3 {
 }
 
 /* Card image styling: fit inside square card */
-section > div img {
+.timeline-section > div img {
   width: 100%;
   height: 100%;              /* Smaller image to fit square card */
   object-fit: cover;
@@ -129,7 +128,7 @@ section > div img {
 }
 
 /* Overlay for blue background and paragraph text */
-section > div::after {
+.timeline-section > div::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -141,18 +140,18 @@ section > div::after {
 }
 
 /* Show overlay on hover */
-section > div:hover::after {
+.timeline-section > div:hover::after {
   opacity: 1;
 }
 
 /* Card content stacking */
-section > div > * {
+.timeline-section > div > * {
   position: relative;
   z-index: 2;
 }
 
 /* Hide paragraph by default, show on hover */
-section p {
+.timeline-section p {
   font-size: 0.98rem;
   margin: 0;
   color: #fff;
@@ -175,16 +174,16 @@ section p {
 }
 
 /* Show paragraph on hover */
-section > div:hover p {
+.timeline-section > div:hover p {
   opacity: 1;
   max-height: 400px;
   pointer-events: auto;
 }
 
 /* Hide h2, h3, and img on hover for clean overlay look */
-section > div:hover h2,
-section > div:hover h3,
-section > div:hover img {
+.timeline-section > div:hover h2,
+.timeline-section > div:hover h3,
+.timeline-section > div:hover img {
   opacity: 0.1;
   transition: opacity 0.3s;
 }
@@ -198,33 +197,33 @@ body > p {
 }
 
 /* Custom scrollbar styling for webkit browsers */
-section::-webkit-scrollbar {
+.timeline-section::-webkit-scrollbar {
   height: 14px;
 }
-section::-webkit-scrollbar-thumb {
+.timeline-section::-webkit-scrollbar-thumb {
   background: #0068b5;
   border-radius: 7px;
   transition: background 0.3s; /* Smooth transition for hover effect */
 }
-section::-webkit-scrollbar-track {
+.timeline-section::-webkit-scrollbar-track {
   background: #e0e7ef;
   border-radius: 7px;
 }
 
 /* Make scrollbar thumb more visible on hover */
-section::-webkit-scrollbar-thumb:hover {
+.timeline-section::-webkit-scrollbar-thumb:hover {
   background: #003e6b; /* Even darker blue on hover for visibility */
 }
 
 /* Focus style for accessibility: show outline when a card is focused */
-section > div:focus {
+.timeline-section > div:focus {
   outline: 3px solid #00a6f2; /* Bright blue outline */
   outline-offset: 2px;
 }
 
 /* Responsive: stack cards vertically on small screens */
 @media (max-width: 900px) {
-  section {
+  .timeline-section {
     /* Stack cards vertically instead of side by side */
     flex-direction: column; /* Change from row to column */
     min-height: unset;      /* Remove fixed min-height */
@@ -236,7 +235,7 @@ section > div:focus {
     /* Turn off scroll snap on small screens (not needed for vertical layout) */
     scroll-snap-type: none;
   }
-  section > div {
+  .timeline-section > div {
     flex: 1 1 auto;         /* Allow cards to grow/shrink */
     max-width: 100%;        /* Cards take full width */
     height: 220px;          /* Reduce card height for small screens */
@@ -246,7 +245,7 @@ section > div:focus {
     /* No scroll snap needed for vertical layout */
     scroll-snap-align: unset;
   }
-  section > div img {
+  .timeline-section > div img {
     height: 200px;           /* Reduce image height for small screens */
     max-height: 200px;      /* Prevent images from growing too tall */
     width: 100%;            /* Image takes full width */
@@ -278,3 +277,4 @@ footer {
   margin: 30px 0 10px 0;
   padding: 10px 0;
 }
+
