@@ -11,7 +11,7 @@ body {
 
 /* Header / Hero Section */
 header {
-  background: linear-gradient(90deg, #0068b5 0%, #0071c5 100%); /* Intel blue gradient */
+  background: linear-gradient(90deg, #005495 0%, #0071c5 100%); /* Darker Intel blue for better contrast */
   color: #fff;
   padding: 40px 0 50px 0;
   text-align: center;
@@ -31,6 +31,7 @@ header h1 {
   margin: 0 0 20px 0;
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-shadow: 1px 1px 2px #003e6b; /* Add subtle shadow for better contrast */
 }
 
 /* Subheading/description */
@@ -39,7 +40,7 @@ header p {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.5;
-  border-bottom: 3px solid #00a6f2; /* Intel accent blue */
+  border-bottom: 3px solid #0071c5; /* Slightly darker accent for contrast */
   padding-bottom: 20px;
 }
 
@@ -83,11 +84,12 @@ header p {
   overflow: hidden;
   min-height: unset;         /* Remove min-height so height is fixed */
   scroll-snap-align: start; /* Snap this card to the start when scrolling */
+  color: #1a1a1a; /* Darker text for better contrast */
 }
 
 /* Highlight card on hover */
 .timeline-section > div:hover {
-  background: #0068b5;
+  background: #005495; /* Darker blue for better contrast */
   color: #fff;
   box-shadow: 0 12px 32px rgba(0,104,181,0.22); /* Stronger shadow on hover */
   transform: scale(1.05); /* Slightly grow the card */
@@ -101,7 +103,7 @@ header p {
 /* Year style */
 .timeline-section h2 {
   font-size: 1.3rem;
-  color: #0068b5;
+  color: #005495; /* Darker blue for contrast */
   margin: 0 0 6px 0;
   font-weight: bold;
 }
@@ -111,7 +113,7 @@ header p {
   font-size: 1.1rem;
   margin: 0 0 12px 0;
   font-weight: bold;
-  color: #222;
+  color: #1a1a1a; /* Darker for contrast */
 }
 
 /* Card image styling: fit inside square card */
@@ -178,6 +180,7 @@ header p {
   opacity: 1;
   max-height: 400px;
   pointer-events: auto;
+  background: rgba(0, 84, 149, 0.92); /* Add dark blue background for better text contrast */
 }
 
 /* Hide h2, h3, and img on hover for clean overlay look */
@@ -269,12 +272,42 @@ body > p {
   }
 }
 
-/* Add simple footer styling */
+/* "Learn More" link styling in 3-column section */
+.col-md-4 a,
+.col-md-4 a:visited {
+  color: #005495;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.col-md-4 a:focus,
+.col-md-4 a:hover {
+  color: #003e6b;
+  background: #e0e7ef;
+  outline: 2px solid #005495;
+  border-radius: 4px;
+}
+
+/* Footer styling for better contrast */
 footer {
-  text-align: center;
-  color: #888;
+  background: #f5f6fa;
+  color: #333;
   font-size: 0.95rem;
-  margin: 30px 0 10px 0;
-  padding: 10px 0;
+  margin: 30px 0 0 0;
+  padding: 16px 0 10px 0;
+  border-top: 2px solid #0071c5;
+}
+footer a {
+  color: #005495;
+}
+footer a:focus,
+footer a:hover {
+  color: #003e6b;
+  text-decoration: underline;
+  outline: 2px solid #005495;
+  border-radius: 4px;
+}
+footer .text-secondary {
+  color: #333 !important;
 }
 
